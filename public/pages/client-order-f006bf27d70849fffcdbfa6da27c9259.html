@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  <title>Fuel Ordering System</title>
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="../assets/js/index.js"></script>
+
+  <script>
+    function checkAuth(){
+      $.get(`${window.location.origin}/check-auth?token=${sessionStorage.sessionToken}`).then( r => {
+        if(r.redirect){
+          window.location.href = `${window.origin}${r.redirect}`
+        }
+      })
+    }
+    setInterval(checkAuth, 50)
+  </script>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link id="pagestyle" href="../assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+
+</head>
+
+<body class="">
+  
+  <main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center" style="background-image: url('../assets/img/station.jpg'); background-size: cover;">
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+              <div class="card card-plain">
+                <div class="card-header">
+                  <h4 class="font-weight-bolder">Make your Fuel Order</h4>
+                  <p class="mb-0">Input the following order details</p>
+                </div>
+                <div class="card-body">
+
+                  <form role="form">
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Station Name</label>
+                      <input id="station_name" type="text" class="form-control" maxlength="10">
+                    </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Station Location</label>
+                      <input id="station_location" type="text" class="form-control" maxlength="10">
+                    </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label">Fuel Quantity</label>
+                      <input id="fuel_quantity" class="form-control" maxlength="3">
+                    </div>
+
+                    <div class="input-group input-group-outline mb-3">
+                      <select name="fuel_types" id="fuels" class="form-control">
+                        <option value="petrol">Petrol</option>
+                        <option value="diesel">Diesel</option>
+                        <option value="blend">Blend</option>
+                      </select>
+                      
+                    </div>
+
+                    
+                    <div class="text-center">
+                      <button onclick="sendClientNewOrder()" type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Send Order</button>
+                    </div>
+
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/core/popper.min.js"></script>
+  <script src="../assets/js/core/bootstrap.min.js"></script>
+  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="../assets/js/material-dashboard.min.js?v=3.0.0"></script>
+</body>
+
+</html>

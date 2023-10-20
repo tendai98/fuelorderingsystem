@@ -1,1 +1,1 @@
-Another Express.js and NodeJS project
+A simple web app for ordering fuel online
